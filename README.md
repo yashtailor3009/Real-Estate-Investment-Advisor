@@ -45,14 +45,24 @@ with MLflow, and an interactive Streamlit dashboard with a **live SQL playground
 
 ## 📸 Screenshots
 
-<!-- Add your screenshots to an assets/screenshots folder and update the paths -->
-| Overview | Investment Advisor |
-|---|---|
-| ![Overview](assets/screenshots/overview.png) | ![Advisor](assets/screenshots/advisor.png) |
-
-| Market Explorer | SQL Lab |
-|---|---|
-| ![Explorer](assets/screenshots/explorer.png) | ![SQL Lab](assets/screenshots/sql_lab.png) |
+<table>
+  <tr>
+    <td align="center"><b>Overview</b></td>
+    <td align="center"><b>Investment Advisor</b></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/80f30a54-190f-4c61-877a-e040afbb863b" alt="Overview" width="100%"/></td>
+    <td><img src="https://github.com/user-attachments/assets/2c7f6f58-2d68-454c-9ecb-84c8026eb49f" alt="Investment Advisor" width="100%"/></td>
+  </tr>
+  <tr>
+    <td align="center"><b>Market Explorer</b></td>
+    <td align="center"><b>SQL Lab</b></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/5b705116-ca00-4443-8528-4e13530424a3" alt="Market Explorer" width="100%"/></td>
+    <td><img src="https://github.com/user-attachments/assets/62a86519-69ef-4112-8947-369bb9221476" alt="SQL Lab" width="100%"/></td>
+  </tr>
+</table>
 
 ## 🗂️ Project Structure
 
@@ -119,6 +129,7 @@ mlflow ui
 5. **Deployment:** Streamlit app with filters, predictions, confidence scores and feature importance.
 
 ### ⚠️ How the targets are defined
+
 The dataset has **no price history and no investment label**, so both are derived from transparent domain rules:
 
 | Component | Effect on annual appreciation |
@@ -183,6 +194,6 @@ Released under the [MIT License](LICENSE).
 
 ## 👤 Author
 
-**Yash Tailor** · [LinkedIn]([https://linkedin.com/in/YOUR-PROFILE](https://www.linkedin.com/in/yash-tailor-054373342/)) 
+**Yash Tailor** · [LinkedIn](https://www.linkedin.com/in/yash-tailor-054373342/)
 
 ⭐ If you found this project useful, please star the repository!
