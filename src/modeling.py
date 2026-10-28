@@ -161,10 +161,10 @@ def train_regression(df: pd.DataFrame, X_tr, X_te, y_tr, y_te):
     return pipe, results, details
 
 
-def compute_importance(pipe, X_te, y_te, scoring: str, n: int = 6000) -> dict:
+def compute_importance(pipe, X_te, y_te, scoring: str, n: int = 500) -> dict:
     """Permutation importance on ORIGINAL columns (model-agnostic, readable)."""
     idx = X_te.sample(min(n, len(X_te)), random_state=C.RANDOM_STATE).index
-    res = permutation_importance(pipe, X_te.loc[idx], y_te.loc[idx], n_repeats=3,
+    res = permutation_importance(pipe, X_te.loc[idx], y_te.loc[idx], n_repeats=1,
                                  random_state=C.RANDOM_STATE, scoring=scoring, n_jobs=-1)
     imp = pd.Series(res.importances_mean, index=X_te.columns).clip(lower=0)
     imp = (imp / imp.sum()).sort_values(ascending=False)
