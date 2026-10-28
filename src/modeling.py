@@ -193,7 +193,7 @@ def train_all(df: pd.DataFrame) -> dict:
         X, y_c, y_r, test_size=0.2, random_state=C.RANDOM_STATE, stratify=y_c)
 
     if HAS_MLFLOW:
-        mlflow.set_tracking_uri(f"file:{C.ROOT / 'mlruns'}")
+        mlflow.set_tracking_uri(f"sqlite:///{C.ROOT / 'mlflow.db'}")
         mlflow.set_experiment("Real_Estate_Investment_Advisor")
 
     print("Training classifiers ...")
