@@ -78,9 +78,8 @@ def regressor_candidates() -> dict:
 
 # -------------------------------------------------------- MLflow helpers
 def _run(name: str):
-    """Return an MLflow run context (or a no-op if MLflow is missing)."""
-    return mlflow.start_run(run_name=name) if HAS_MLFLOW else nullcontext()
-
+    """Disable MLflow runs during deployment."""
+    return nullcontext()
 
 def _log(params: dict, metrics: dict, model=None, name: str = "model"):
     """Log to MLflow when available; never let tracking break training."""
@@ -192,9 +191,9 @@ def train_all(df: pd.DataFrame) -> dict:
     X_tr, X_te, yc_tr, yc_te, yr_tr, yr_te = train_test_split(
         X, y_c, y_r, test_size=0.2, random_state=C.RANDOM_STATE, stratify=y_c)
 
-    if HAS_MLFLOW:
-        mlflow.set_tracking_uri(f"sqlite:///{C.ROOT / 'mlflow.db'}")
-        mlflow.set_experiment("Real_Estate_Investment_Advisor")
+    # if HAS_MLFLOW:
+    #     mlflow.set_tracking_uri(f"sqlite:///{C.ROOT / 'mlflow.db'}")
+    #     mlflow.set_experiment("Real_Estate_Investment_Advisor")
 
     print("Training classifiers ...")
     clf, clf_res, clf_det = train_classification(df, X_tr, X_te, yc_tr, yc_te)
