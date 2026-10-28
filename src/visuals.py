@@ -23,18 +23,53 @@ FONT = "Inter, Segoe UI, Roboto, sans-serif"
 # ------------------------------------------------------------- base style
 def style(fig: go.Figure, title: str, subtitle: str | None = None, height: int = 420,
           legend: bool = False) -> go.Figure:
-    """Apply the shared look: clean white card, brand font, soft grid."""
-    text = f"<b>{title}</b>" + (f"<br><span style='font-size:12px;color:{P['muted']}'>{subtitle}</span>" if subtitle else "")
-    fig.update_layout(
-        title=dict(text=text, x=0.01, xanchor="left", font=dict(size=17, color=P["navy"])),
-        height=height, margin=dict(l=10, r=20, t=80 if subtitle else 60, b=10),
-        paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
-        font=dict(family=FONT, color=P["text"], size=12), showlegend=legend,
-        colorway=C.COLOR_SEQ, hoverlabel=dict(bgcolor="white", font_size=12),
+    """Apply shared chart styling with readable dark labels."""
+    text = f"<b>{title}</b>" + (
+        f"<br><span style='font-size:12px;color:#374151'>{subtitle}</span>"
+        if subtitle else ""
     )
-    fig.update_xaxes(showgrid=False, zeroline=False, linecolor="#D5DCE6")
-    fig.update_yaxes(gridcolor="#E8EDF4", zeroline=False)
+
+    fig.update_layout(
+        title=dict(
+            text=text,
+            x=0.01,
+            xanchor="left",
+            font=dict(size=17, color="#111111"),
+        ),
+        height=height,
+        margin=dict(l=10, r=20, t=80 if subtitle else 60, b=10),
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="rgba(0,0,0,0)",
+        font=dict(family=FONT, color="#111827", size=13),
+        showlegend=legend,
+        colorway=C.COLOR_SEQ,
+        legend=dict(font=dict(color="#111111", size=11)),
+        hoverlabel=dict(
+            bgcolor="white",
+            font_size=12,
+            font_color="#111111",
+        ),
+    )
+
+    fig.update_xaxes(
+        showgrid=False,
+        zeroline=False,
+        linecolor="#9CA3AF",
+        tickfont=dict(color="#374151", size=11),
+        title_font=dict(color="#111111", size=12),
+    )
+
+    fig.update_yaxes(
+        gridcolor="#E5E7EB",
+        zeroline=False,
+        linecolor="#9CA3AF",
+        tickfont=dict(color="#374151", size=11),
+        title_font=dict(color="#111111", size=12),
+    )
+
+    fig.update_annotations(font=dict(color="#111111"))
     return fig
+
 
 
 def callout(fig: go.Figure, text: str, x=0.99, y=0.97, color=None) -> None:
